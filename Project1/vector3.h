@@ -12,100 +12,79 @@ private:
 	type x, y, z;
 public:
 
-	vec3()
+	vec3(){}
+
+	vec3(type &x, type &y, type &z) : x(x),y(y),z(z){}
+
+	vec3(vec3 &vec) : x(vec), y(vec), z(vec) {}
+
+	vec3 operator+(const vec3 &vect) const
 	{
-		x = 0;
-		y = 0;
-		z = 0;
+		return vec3 (x + vect.x, y + vect.y, z + vect.z);
 	}
 
-	vec3(int x, int y, int z)
+	vec3 operator-(const vec3 &vect) const
 	{
-		this->x = x;
-		this->y = y;
-		this->z = z;
+		return vec3 (x - vect.x, y - vect.y, z - vect.z);
 	}
 
-	vec3(float x, float y, float z)
-	{
-		this->x = x;
-		this->y = y;
-		this->z = z;
-	}
-
-	vec3 operator+(vec3 const &vect)
-	{
-		vec3 vecres(x + vect.x, y + vect.y, z + vect.z);
-		return vecres;
-	}
-
-	vec3 operator-(vec3 vect)
-	{
-		vec3 vecres(x - vect.x, y - vect.y, z - vect.z);
-		return vecres;
-	}
-
-	void operator+=(vec3 const &vect)
+	vec3 operator+=(const vec3 &vect)
 	{
 		x += vect.x;
 		y += vect.y;
 		z += vect.z;
+		return *this;
 		
 	}
 
-	void operator-=(vec3 const &vect)
+	vec3 operator-=(vec3 const &vect)
 	{
 		x -= vect.x;
 		y -= vect.y;
 		z -= vect.z;
+		return *this;
 	}
 
-	void operator=(vec3 const &vect)
+	vec3 operator=(vec3 const &vect)
 	{
 		x = vect.x;
 		y = vect.y;
 		z = vect.z;
+		return *this;
 	}
 
-	bool operator==(vec3 const &vect)
+	bool operator==(vec3 const &vect) const
 	{
-		if (x == vect.x && y == vect.y && z == vect.z) return true;
-		else return false;
+		return (x == vect.x && y == vect.y && z == vect.z);
 	}
 
-	void normalize() const
+	vec3 normalize() const
 	{
-		type magnitude = sqrt(pow(x , 2) + pow(y , 2) + pow(z , 2));
-		if (magnitude != 0)
-		{
-			cout << x / magnitude << " " << y / magnitude << " " << z / magnitude << endl;
-		}
-		else
-			cout << "no exist" << endl;
+		type magnitude = sqrt((x * x) + (y * y) + (z * z));
+		return vec3 (x/magnitude, y/magnitude, z/magnitude);
+
 	}
 
-	void zero()
+	vec3 zero()
 	{
-		x = 0;
-		y = 0;
-		z = 0;
+		x = 0u;
+		y = 0u;
+		z = 0u;
+		return *this;;
 	}
 
-	void is_zero()
+	bool is_zero() const
 	{
-		if (x == 0 && y == 0 && z == 0) cout << "is zero" << endl;
-		else cout << "no is zero" << endl;
+		return (x == 0 && y == 0 && z == 0);
+		
 	}
 
-	void distance_to(vec3 const &vect)
+	type distance_to(vec3 const &vect) const
 	{
-		cout << "(" << x - vect.x << " , " <<  y - vect.y << " , " << z - vect.z << ")" << endl;
+		type distance = sqrt(((x-vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)));
+		return distance;
 	}
 
-	void name()
-	{
-		cout << x << " " << y << " " << z << endl;
-	}
 };
 
 #endif
