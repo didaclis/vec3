@@ -14,9 +14,9 @@ public:
 
 	vec3(){}
 
-	vec3(type &x, type &y, type &z) : x(x),y(y),z(z){}
+	vec3(const type &x, const type &y, const type &z) : x(x),y(y),z(z){}
 
-	vec3(vec3 &vec) : x(vec), y(vec), z(vec) {}
+	vec3(const vec3 &vec) : x(vec.x), y(vec.y), z(vec.z) {}
 
 	vec3 operator+(const vec3 &vect) const
 	{
@@ -30,59 +30,60 @@ public:
 
 	vec3 operator+=(const vec3 &vect)
 	{
-		x += vect.x;
-		y += vect.y;
-		z += vect.z;
+		x += vect.x; y += vect.y; z += vect.z;
 		return *this;
 		
 	}
 
-	vec3 operator-=(vec3 const &vect)
+	vec3 operator-=(const vec3 &vect)
 	{
-		x -= vect.x;
-		y -= vect.y;
-		z -= vect.z;
+		x -= vect.x; y -= vect.y; z -= vect.z;
 		return *this;
 	}
 
-	vec3 operator=(vec3 const &vect)
+	vec3 operator=(const vec3 &vect)
 	{
-		x = vect.x;
-		y = vect.y;
-		z = vect.z;
+		x = vect.x; y = vect.y; z = vect.z;
 		return *this;
 	}
 
-	bool operator==(vec3 const &vect) const
+	bool operator==(const vec3 &vect) const
 	{
 		return (x == vect.x && y == vect.y && z == vect.z);
 	}
 
-	vec3 normalize() const
+	vec3 normalized() const
 	{
 		type magnitude = sqrt((x * x) + (y * y) + (z * z));
 		return vec3 (x/magnitude, y/magnitude, z/magnitude);
 
 	}
 
+	vec3 normalize()
+	{
+		type magnitude = sqrt((x * x) + (y * y) + (z * z));
+		x = x / magnitude; y = y / magnitude; z = z / magnitude;
+		return vec3 *this;
+
+	}
+
 	vec3 zero()
 	{
-		x = 0u;
-		y = 0u;
-		z = 0u;
-		return *this;;
+		x = 0.0f;
+		y = 0.0f;
+		z = 0.0f;
+		return *this;
 	}
 
 	bool is_zero() const
 	{
-		return (x == 0 && y == 0 && z == 0);
+		return (x == 0.0 && y == 0.0 && z == 0.0);
 		
 	}
 
-	type distance_to(vec3 const &vect) const
+	type distance_to(const vec3 &vect) const
 	{
-		type distance = sqrt(((x-vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)));
-		return distance;
+		return sqrt(((x-vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)));
 	}
 
 };
