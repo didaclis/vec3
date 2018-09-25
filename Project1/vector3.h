@@ -2,19 +2,18 @@
 #define _VECTOR3_H_
 #include <math.h>
 
-using namespace std;
 
-template<class type> 
+template<class Type> 
 class vec3 
 {	
 private:
 	
-	type x, y, z;
+	Type x, y, z;
 public:
 
 	vec3(){}
 
-	vec3(const type &x, const type &y, const type &z) : x(x),y(y),z(z){}
+	vec3(const Type &x, const Type &y, const Type &z) : x(x),y(y),z(z){}
 
 	vec3(const vec3 &vec) : x(vec.x), y(vec.y), z(vec.z) {}
 
@@ -54,14 +53,14 @@ public:
 
 	vec3 normalized() const
 	{
-		type magnitude = sqrt((x * x) + (y * y) + (z * z));
+		Type magnitude = sqrt((x * x) + (y * y) + (z * z));
 		return vec3 (x/magnitude, y/magnitude, z/magnitude);
 
 	}
 
 	vec3 normalize()
 	{
-		type magnitude = sqrt((x * x) + (y * y) + (z * z));
+		Type magnitude = sqrt((x * x) + (y * y) + (z * z));
 		x = x / magnitude; y = y / magnitude; z = z / magnitude;
 		return vec3 *this;
 
@@ -81,9 +80,14 @@ public:
 		
 	}
 
-	type distance_to(const vec3 &vect) const
+	Type distance_to(const vec3 &vect) const
 	{
 		return sqrt(((x-vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)));
+	}
+
+	bool distance_to_shot(const vec3 &vect, const Type rang)const
+	{
+		if (((x - vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)) < rang*rang);
 	}
 
 };
