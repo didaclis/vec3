@@ -85,9 +85,9 @@ public:
 		return sqrt(((x-vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)));
 	}
 
-	bool distance_to_shot(const vec3 &vect, const Type rang)const
+	Type distance_to_shot(const vec3 &vect)const
 	{
-		if (((x - vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z)) < rang*rang);
+		return ((x - vect.x) * (x - vect.x)) + ((y - vect.y) * (y - vect.y)) + ((z - vect.z) * (z - vect.z));
 	}
 
 };
