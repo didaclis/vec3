@@ -6,7 +6,7 @@
 template<class Type> 
 class vec3 
 {	
-private:
+public:
 	
 	Type x, y, z;
 public:
@@ -42,7 +42,9 @@ public:
 
 	vec3 operator=(const vec3 &vect)
 	{
-		x = vect.x; y = vect.y; z = vect.z;
+		x = vect.x;
+		y = vect.y; 
+		z = vect.z;
 		return *this;
 	}
 
@@ -62,21 +64,21 @@ public:
 	{
 		Type magnitude = sqrt((x * x) + (y * y) + (z * z));
 		x = x / magnitude; y = y / magnitude; z = z / magnitude;
-		return vec3 *this;
+		return *this;
 
 	}
 
 	vec3 zero()
 	{
-		x = 0.0f;
-		y = 0.0f;
-		z = 0.0f;
+		x = 0;
+		y = 0;
+		z = 0;
 		return *this;
 	}
 
 	bool is_zero() const
 	{
-		return (x == 0.0 && y == 0.0 && z == 0.0);
+		return (x == 0 && y == 0 && z == 0);
 		
 	}
 
