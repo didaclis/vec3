@@ -87,7 +87,7 @@ bool j1App::Awake()
 	 
 	// TODO 4: Read the title from the config file
 	// and set the window title using win->SetTitle()
-	const char* title = node.attribute("title").value();
+	const char* title = node.child("title").value();
 	win->SetTitle(title);
 	return ret;
 }

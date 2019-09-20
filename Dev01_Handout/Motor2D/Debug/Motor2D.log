@@ -1,10 +1,2 @@
-﻿  j1Main.cpp
-  j1App.cpp
-  j1Audio.cpp
-  j1Input.cpp
-  j1Scene.cpp
-  j1Render.cpp
-  j1Textures.cpp
-  j1Window.cpp
-  Generating Code...
-  Motor2D.vcxproj -> C:\Users\didaclis\Desktop\Dev01_Handout\Debug\Motor 2D.exe
+﻿  j1App.cpp
+  Motor2D.vcxproj -> C:\Users\didaclis\Documents\GitHub\vec3\Dev01_Handout\Debug\Motor 2D.exe
